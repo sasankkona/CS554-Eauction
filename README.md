@@ -29,7 +29,7 @@ A fully functional decentralized auction platform built with **Solidity**, **Har
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                     E-AUCTION PLATFORM                       │
+│                     E-AUCTION PLATFORM                      │
 └─────────────────────────────────────────────────────────────┘
 
 ┌──────────────────┐         ┌──────────────────┐         ┌──────────────────┐
@@ -70,16 +70,16 @@ A fully functional decentralized auction platform built with **Solidity**, **Har
 ├─────────────────────────────────────────────────────────────┤
 │  App.jsx (Main Container)                                   │
 │    ├── Header Component                                     │
-│    ├── Tabs (Active/Ended/Create)                          │
-│    ├── AuctionCard Component (Display & Interaction)       │
-│    └── CreateAuction Component (Form)                      │
+│    ├── Tabs (Active/Ended/Create)                           │
+│    ├── AuctionCard Component (Display & Interaction)        │
+│    └── CreateAuction Component (Form)                       │
 └─────────────────────────────────────────────────────────────┘
                            │
                            ▼
 ┌─────────────────────────────────────────────────────────────┐
 │                   WEB3 SERVICE LAYER                        │
 ├─────────────────────────────────────────────────────────────┤
-│  web3.js (Blockchain Interaction)                          │
+│  web3.js (Blockchain Interaction)                           │
 │    ├── Wallet Connection                                    │
 │    ├── Contract Interaction                                 │
 │    ├── Transaction Management                               │
@@ -92,9 +92,9 @@ A fully functional decentralized auction platform built with **Solidity**, **Har
 ├─────────────────────────────────────────────────────────────┤
 │  Auction.sol                                                │
 │    ├── createAuction()                                      │
-│    ├── placeBid()                                          │
-│    ├── endAuction()                                        │
-│    ├── withdraw()                                          │
+│    ├── placeBid()                                           │
+│    ├── endAuction()                                         │
+│    ├── withdraw()                                           │
 │    └── View Functions                                       │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -103,37 +103,75 @@ A fully functional decentralized auction platform built with **Solidity**, **Har
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                              DEPENDENCY GRAPH                                  │
+│                              DEPENDENCY GRAPH                                   │
+│                    (Including Key Functions and Components)                     │
 └─────────────────────────────────────────────────────────────────────────────────┘
 
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│   package.json  │────►│ hardhat.config.cjs │     │   .gitignore   │
-│   (root)        │     │   (networks)     │     │   (excludes)    │
-└─────────────────┘     └─────────────────┘     └─────────────────┘
+┌─────────────────┐     ┌────────────────────┐     ┌─────────────────┐
+│   package.json  │────►│ hardhat.config.cjs │     │   .gitignore    │
+│   (root)        │     │   (networks)       │     │   (excludes)    │
+│   scripts:      │     │   networks:        │     │                 │
+│   - test        │     │   - sepholia       │     │                 │
+│   - compile     │     │   - iitbhilai      │     │                 │
+│   - clean       │     │                    │     │                 │
+└─────────────────┘     └────────────────────┘     └─────────────────┘
         │                       │                       │
         │                       │                       │
         ▼                       ▼                       ▼
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│   contracts/    │────►│   ignition/     │────►│   test/         │
-│   Auction.sol   │     │   Auction.js    │     │   Auction.js    │
-│   Lock.sol      │     │   Lock.js       │     │   Lock.js       │
-└─────────────────┘     └─────────────────┘     └─────────────────┘
+┌───────────────────────┐     ┌───────────────────┐     ┌─────────────────┐
+│   contracts/          │────►│   ignition/       │────►│   test/         │
+│   Auction.sol         │     │   Auction.js      │     │   Auction.js    │
+│   functions:          │     │   exports:        │     │   test suites:  │
+│   - createAuction     │     │   - AuctionModule │     │   - Deployment  │
+│   - placeBid          │     │                   │     │   - Auctions    │
+│   - endAuction        │     │                   │     │   - Bidding     │
+│   - withdraw          │     │                   │     │   - Ending      │
+│   - getAuction        │     │                   │     │   - Withdrawals │
+│   - getActiveAuctions │     │                   │     │                 │
+└───────────────────────┘     └───────────────────┘     └─────────────────┘
         │                       │                       │
         │                       │                       │
         └───────────────────────┼───────────────────────┘
                                 │
                                 ▼
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│   frontend/     │────►│   web3.js       │────►│   Auction.sol   │
-│   package.json  │     │   (ethers.js)   │     │   (contract)    │
-│   vite.config.js│     │                 │     │                 │
-└─────────────────┘     └─────────────────┘     └─────────────────┘
+┌─────────────────┐     ┌─────────────────┐     ┌──────────────────────────┐
+│   frontend/     │────►│   web3.js       │────►│   Auction.sol            │
+│   package.json  │     │   (ethers.js)   │     │   (contract)             │
+│   scripts:      │     │   methods:      │     │   functions:             │
+│   - dev         │     │   - connectW..  │     │   - createAuction        │
+│   - build       │     │   - setContr..  │     │   - placeBid             │
+│   vite.config.js│     │   - createAuc.. │     │   - endAuction           │
+│                 │     │   - placeBid    │     │   - withdraw             │
+│                 │     │   - endAuction  │     │   - getAuction           │
+│                 │     │   - withdraw    │     │   - getActiveAuctions    │
+│                 │     │   - getAuction  │     │   - getTotal..           │
+│                 │     │   - getActive.. │     │   - getPending..         │
+│                 │     │   - getBalance  │     │                          │
+│                 │     │   - formatAddr..│     │                          │
+│                 │     │   - listenToEv..│     │                          │
+└─────────────────┘     └─────────────────┘     └──────────────────────────┘
         │                       │                       │
         │                       │                       │
         ▼                       ▼                       ▼
 ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
 │   main.jsx      │────►│   App.jsx       │────►│ AuctionCard.jsx │
-│   (entry)       │     │   (container)   │     │ (component)     │
+│   (entry)       │     │   (container)   │     │   (component)   │
+│   functions:    │     │   state:        │     │   props:        │
+│   - ReactDOM..  │     │   - account     │     │   - auction     │
+│                 │     │   - balance     │     │   - currentAcc..│
+│                 │     │   - auctions    │     │   - onUpdate    │
+│                 │     │   functions:    │     │   state:        │
+│                 │     │   - connectW..  │     │   - bidAmount   │
+│                 │     │   - loadAuct..  │     │   - showBidForm │
+│                 │     │   - refreshB..  │     │   - loading     │
+│                 │     │                 │     │   - timeRemain..│
+│                 │     │                 │     │   - pendingRet..│
+│                 │     │                 │     │   features:     │
+│                 │     │                 │     │   - countdown   │
+│                 │     │                 │     │   - bid form    │
+│                 │     │                 │     │   - end auction │
+│                 │     │                 │     │   - withdraw    │
+│                 │     │                 │     │   - badges      │
 └─────────────────┘     └─────────────────┘     └─────────────────┘
                                 │                       │
                                 │                       │
@@ -143,6 +181,16 @@ A fully functional decentralized auction platform built with **Solidity**, **Har
                                                 ┌─────────────────┐
                                                 │ CreateAuction.jsx│
                                                 │   (component)    │
+                                                │   state:         │
+                                                │   - formData     │
+                                                │   - loading      │
+                                                │   - message      │
+                                                │   validation:    │
+                                                │   - required     │
+                                                │   - price > 0    │
+                                                │   - duration > 0 │
+                                                │   duration opts: │
+                                                │   - 5min to 7days│
                                                 └─────────────────┘
 ```
 

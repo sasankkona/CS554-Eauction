@@ -41,7 +41,7 @@ function AuctionCard({ auction, currentAccount, onUpdate }) {
       : parseFloat(auction.currentBid) + 0.01;
 
     if (parseFloat(bidAmount) < minBid) {
-      alert(`Bid must be at least ${minBid} ETH`);
+      alert(`Bid must be greater ${minBid} ETH`);
       return;
     }
 
