@@ -101,28 +101,28 @@ A fully functional decentralized auction platform built with **Solidity**, **Har
 ## ✨ Features
 
 ### Smart Contract Features
-- ✅ Create auctions with title, description, starting price, and duration
-- ✅ Place bids on active auctions (automatic outbid handling)
-- ✅ Allow bidders to increase their own bids
-- ✅ Automatic refund system for outbid bidders
-- ✅ Seller can end auction after time expires
-- ✅ Withdraw funds for outbid bidders
-- ✅ Event emission for all major actions
-- ✅ Complete access control and validation
+- Create auctions with title, description, starting price, and duration
+- Place bids on active auctions (automatic outbid handling)
+- Allow bidders to increase their own bids
+- Automatic refund system for outbid bidders
+- Seller can end auction after time expires
+- Withdraw funds for outbid bidders
+- Event emission for all major actions
+- Complete access control and validation
 
 ### Frontend Features
-- 🎨 Modern, responsive UI with gradient design
-- 🔐 MetaMask wallet integration
-- 📊 Real-time auction countdown timers
-- 💰 Live balance updates
-- 🏷️ Badge system (Seller, Winner, Outbid)
-- 🔄 Event-driven updates
-- 📱 Mobile-responsive design
-- ⚡ Fast and intuitive user experience
+- Modern, responsive UI with gradient design
+- MetaMask wallet integration
+- Real-time auction countdown timers
+- Live balance updates
+- Badge system (Seller, Winner, Outbid)
+- Event-driven updates
+- Mobile-responsive design
+- Fast and intuitive user experience
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### Blockchain
 - **Solidity** `^0.8.28` - Smart contract language
@@ -146,7 +146,7 @@ A fully functional decentralized auction platform built with **Solidity**, **Har
 cs554-eauction3/
 │
 ├── contracts/                      # Smart Contracts
-│   ├── Auction.sol                # Main auction contract (218 lines)
+│   ├── Auction.sol                # Main auction contract 
 │   └── Lock.sol                   # Sample contract (unused)
 │
 ├── ignition/                      # Deployment Modules
@@ -155,26 +155,26 @@ cs554-eauction3/
 │       └── Lock.js               # Lock deployment script (unused)
 │
 ├── test/                          # Smart Contract Tests
-│   ├── Auction.js                # Comprehensive auction tests (409 lines, 30 tests)
+│   ├── Auction.js                # Comprehensive auction tests 
 │   └── Lock.js                   # Sample tests (unused)
 │
 ├── frontend/                      # React Frontend Application
 │   ├── src/
 │   │   ├── components/           # React Components
-│   │   │   ├── AuctionCard.jsx  # Individual auction display (184 lines)
-│   │   │   └── CreateAuction.jsx # Auction creation form (157 lines)
+│   │   │   ├── AuctionCard.jsx  # Individual auction display 
+│   │   │   └── CreateAuction.jsx # Auction creation form 
 │   │   │
 │   │   ├── utils/                # Utility Functions
-│   │   │   └── web3.js          # Web3/Blockchain interaction (199 lines)
+│   │   │   └── web3.js          # Web3/Blockchain interaction 
 │   │   │
-│   │   ├── App.jsx               # Main application component (262 lines)
-│   │   ├── App.css               # Application styles (480 lines)
-│   │   └── main.jsx              # React entry point (9 lines)
+│   │   ├── App.jsx               # Main application component 
+│   │   ├── App.css               # Application styles 
+│   │   └── main.jsx              # React entry point
 │   │
 │   ├── index.html                # HTML template
 │   ├── vite.config.js            # Vite configuration
 │   ├── package.json              # Frontend dependencies
-│   └── node_modules/             # Frontend dependencies (121 packages)
+│   └── node_modules/             # Frontend dependencies
 │
 ├── node_modules/                  # Backend dependencies
 ├── hardhat.config.cjs            # Hardhat configuration
@@ -188,7 +188,7 @@ cs554-eauction3/
 
 #### Smart Contracts (`contracts/`)
 
-**`Auction.sol`** (218 lines)
+**`Auction.sol`** 
 ```
 Purpose: Main smart contract implementing auction logic
 Key Components:
@@ -215,7 +215,7 @@ Key Components:
 
 #### Deployment (`ignition/modules/`)
 
-**`Auction.js`** (10 lines)
+**`Auction.js`** 
 ```
 Purpose: Hardhat Ignition deployment configuration
 Exports: AuctionModule with deployed Auction contract instance
@@ -223,7 +223,7 @@ Exports: AuctionModule with deployed Auction contract instance
 
 #### Tests (`test/`)
 
-**`Auction.js`** (409 lines, 30 tests)
+**`Auction.js`** 
 ```
 Test Suites:
   1. Deployment (1 test)
@@ -271,7 +271,7 @@ Test Suites:
 
 #### Frontend Components (`frontend/src/`)
 
-**`App.jsx`** (262 lines)
+**`App.jsx`** 
 ```
 Purpose: Main application container
 State Management:
@@ -297,7 +297,7 @@ Components Rendered:
   └── CreateAuction form
 ```
 
-**`AuctionCard.jsx`** (184 lines)
+**`AuctionCard.jsx`** 
 ```
 Purpose: Individual auction display and interaction
 Props:
@@ -321,7 +321,7 @@ Features:
   └── Responsive actions based on user role
 ```
 
-**`CreateAuction.jsx`** (157 lines)
+**`CreateAuction.jsx`** 
 ```
 Purpose: Auction creation form
 State:
@@ -345,7 +345,7 @@ Duration Options:
   └── 1, 3, 7 days
 ```
 
-**`web3.js`** (199 lines)
+**`web3.js`** 
 ```
 Purpose: Web3 service layer for blockchain interaction
 Class: Web3Service
@@ -377,22 +377,22 @@ ABI Definition:
   Includes all contract function signatures for interaction
 ```
 
-**`App.css`** (480 lines)
+**`App.css`** 
 ```
 Purpose: Complete application styling
 Sections:
-  ├── Reset & Base Styles (lines 1-20)
-  ├── Header Styles (lines 22-69)
-  ├── Button Styles (lines 70-128)
-  ├── Container & Layout (lines 130-154)
-  ├── Tab Navigation (lines 155-181)
-  ├── Form Styles (lines 183-240)
-  ├── Auction Grid & Cards (lines 242-350)
-  ├── Status Messages (lines 352-377)
-  ├── Loading States (lines 379-400)
-  ├── Empty States (lines 402-420)
-  ├── Utility Classes (lines 422-452)
-  └── Responsive Styles (lines 454-480)
+  ├── Reset & Base Styles
+  ├── Header Styles 
+  ├── Button Styles 
+  ├── Container & Layout 
+  ├── Tab Navigation 
+  ├── Form Styles 
+  ├── Auction Grid & Cards 
+  ├── Status Messages 
+  ├── Loading States 
+  ├── Empty States 
+  ├── Utility Classes 
+  └── Responsive Styles 
 
 Design System:
   Colors:
@@ -410,7 +410,7 @@ Responsive Breakpoints:
 
 #### Configuration Files
 
-**`hardhat.config.cjs`** (16 lines)
+**`hardhat.config.cjs`** 
 ```
 Solidity Version: 0.8.28
 Networks:
@@ -421,7 +421,7 @@ Networks:
       └── URL: Infura endpoint
 ```
 
-**`vite.config.js`** (10 lines)
+**`vite.config.js`** 
 ```
 Plugins: @vitejs/plugin-react
 Server:
@@ -429,32 +429,32 @@ Server:
   └── Auto-open: true
 ```
 
-**`package.json`** (Root, 30 lines)
+**`package.json`** 
 ```
 Scripts:
   └── test: Placeholder (use npx hardhat test)
   
-DevDependencies: (29 packages)
-  ├── @nomicfoundation/hardhat-* (8 packages)
+DevDependencies: 
+  ├── @nomicfoundation/hardhat-* 
   ├── hardhat: ^2.22.6
   ├── ethers: ^6.15.0
   ├── chai: ^4.5.0
   └── typechain, solidity-coverage, etc.
 ```
 
-**`frontend/package.json`** (20 lines)
+**`frontend/package.json`** 
 ```
 Scripts:
   ├── dev: vite (development server)
   ├── build: vite build (production)
   └── preview: vite preview
 
-Dependencies: (3 packages)
+Dependencies: 
   ├── react: ^18.3.1
   ├── react-dom: ^18.3.1
   └── ethers: ^6.15.0
 
-DevDependencies: (2 packages)
+DevDependencies: 
   ├── @vitejs/plugin-react: ^4.3.4
   └── vite: ^6.0.1
 ```
@@ -466,16 +466,16 @@ DevDependencies: (2 packages)
 ### Required Software
 
 **Do you have Node.js installed?**
-- ✅ **YES**: Ensure you have Node.js v18+ (`node --version`)
-- ❌ **NO**: Install from [nodejs.org](https://nodejs.org/)
+- **YES**: Ensure you have Node.js v18+ (`node --version`)
+- **NO**: Install from [nodejs.org](https://nodejs.org/)
 
 **Do you have MetaMask installed?**
-- ✅ **YES**: Great! Make sure it's unlocked
-- ❌ **NO**: Install MetaMask browser extension from [metamask.io](https://metamask.io/)
+- **YES**: Great! Make sure it's unlocked
+- **NO**: Install MetaMask browser extension from [metamask.io](https://metamask.io/)
 
 **Do you have Git installed?**
-- ✅ **YES**: You're ready to clone
-- ❌ **NO**: Install from [git-scm.com](https://git-scm.com/)
+- **YES**: You're ready to clone
+- **NO**: Install from [git-scm.com](https://git-scm.com/)
 
 ### System Requirements
 - **Operating System**: macOS, Linux, or Windows
@@ -486,16 +486,16 @@ DevDependencies: (2 packages)
 
 ---
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 ### Step 1: Clone or Navigate to Project
 
 **Have you already cloned/downloaded the project?**
-- ✅ **YES**: Navigate to the project directory
+- **YES**: Navigate to the project directory
   ```bash
   cd /Users/sasank/Desktop/cs554-eauction3
   ```
-- ❌ **NO**: Clone or create the project first
+- **NO**: Clone or create the project first
 
 ### Step 2: Install Backend Dependencies
 
@@ -504,11 +504,6 @@ DevDependencies: (2 packages)
 npm install
 ```
 
-**Expected output:**
-```
-added XXX packages, and audited XXX packages in Xs
-found 0 vulnerabilities
-```
 
 ### Step 3: Install Frontend Dependencies
 
@@ -526,23 +521,23 @@ cd ..
 ### Step 4: Verify Installation
 
 **Did all installations complete successfully?**
-- ✅ **YES**: Proceed to the next section
-- ❌ **NO**: Check error messages and ensure all prerequisites are met
+- **YES**: Proceed to the next section
+- **NO**: Check error messages and ensure all prerequisites are met
 
 ---
 
-## 🎮 Usage Guide
+## Usage Guide
 
 ### Phase 1: Testing Smart Contracts
 
 **Do you want to run tests first?**
-- ✅ **YES**: Recommended to ensure everything works
+- **YES**: Recommended to ensure everything works
   ```bash
   npx hardhat test
   ```
   **Expected result**: All 30 tests should pass ✓
   
-- ❌ **NO**: Skip to deployment
+- **NO**: Skip to deployment
 
 ### Phase 2: Start Local Blockchain
 
@@ -562,7 +557,7 @@ Account #1: 0x70997970C51812dc3A010C7d01b50e0d17dc79C8 (10000 ETH)
 ...
 ```
 
-**Keep this terminal running!** ⚠️
+**Keep this terminal running!** 
 
 ### Phase 3: Deploy Smart Contract
 
@@ -572,16 +567,16 @@ npx hardhat ignition deploy ./ignition/modules/Auction.js --network localhost
 ```
 
 **Did deployment succeed?**
-- ✅ **YES**: Copy the contract address (e.g., `0x5FbDB2315678afecb367f032d93F642f64180aa3`)
-- ❌ **NO**: Ensure Terminal 1 (Hardhat node) is running
+- **YES**: Copy the contract address (e.g., `0x5FbDB2315678afecb367f032d93F642f64180aa3`)
+- **NO**: Ensure Terminal 1 (Hardhat node) is running
 
 **Save this address - you'll need it!** 📝
 
 ### Phase 4: Configure MetaMask
 
 **Is MetaMask connected to localhost network?**
-- ✅ **YES**: Skip to Phase 5
-- ❌ **NO**: Follow these steps:
+- **YES**: Skip to Phase 5
+- **NO**: Follow these steps:
 
 1. **Add Localhost Network to MetaMask:**
    - Open MetaMask
@@ -618,8 +613,8 @@ npm run dev
 ```
 
 **Did the browser open automatically?**
-- ✅ **YES**: Continue to Phase 6
-- ❌ **NO**: Open browser manually and go to `http://localhost:3000`
+- **YES**: Continue to Phase 6
+- **NO**: Open browser manually and go to `http://localhost:3000`
 
 ### Phase 6: Use the Application
 
@@ -752,22 +747,8 @@ REPORT_GAS=true npx hardhat test
 npx hardhat coverage
 ```
 
-### Test Results
 
-**All tests passing?**
-- ✅ **YES**: 30/30 tests pass
-  - Deployment: 1 test
-  - Creating Auctions: 5 tests
-  - Bidding: 9 tests
-  - Ending Auctions: 6 tests
-  - Withdrawals: 5 tests
-  - View Functions: 4 tests
-
-- ❌ **NO**: Check error messages and ensure contract logic is correct
-
----
-
-## 🚢 Deployment
+## Deployment
 
 ### Deploy to Localhost
 
@@ -778,26 +759,26 @@ npx hardhat ignition deploy ./ignition/modules/Auction.js --network localhost
 ### Deploy to IIT Bhilai Blockchain
 
 **Is the IIT Bhilai blockchain network accessible?**
-- ✅ **YES**:
+- **YES**:
   ```bash
   npx hardhat ignition deploy ./ignition/modules/Auction.js --network iitbhilaiBlockchain
   ```
-- ❌ **NO**: Use localhost or Ethereum testnet
+- **NO**: Use localhost or Ethereum testnet
 
 ### Deploy to Ethereum Sepolia Testnet
 
 **Do you have Sepolia ETH?**
-- ✅ **YES**:
+- **YES**:
   ```bash
   npx hardhat ignition deploy ./ignition/modules/Auction.js --network sepholia
   ```
-- ❌ **NO**: Get test ETH from [Sepolia Faucet](https://sepoliafaucet.com/)
+- **NO**: Get test ETH from [Sepolia Faucet](https://sepoliafaucet.com/)
 
-**⚠️ Important**: Update private key in `hardhat.config.cjs` with your actual key (never commit this!)
+** Important**: Update private key in `hardhat.config.cjs` with your actual key (never commit this!)
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -806,104 +787,73 @@ npx hardhat ignition deploy ./ignition/modules/Auction.js --network localhost
 **Problem**: "MetaMask is not installed!"
 
 **Solution**:
-- ✅ Install MetaMask browser extension
-- ✅ Refresh the page after installation
-- ✅ Ensure MetaMask is unlocked
+- Install MetaMask browser extension
+- Refresh the page after installation
+- Ensure MetaMask is unlocked
 
 #### 2. Transaction Failed
 
 **Problem**: Transaction reverted
 
 **Possible causes and solutions**:
-- ❌ **Insufficient balance**: Add more test ETH to account
-- ❌ **Bid too low**: Increase bid amount
-- ❌ **Auction ended**: Cannot bid on expired auctions
-- ❌ **Not auction seller**: Only seller can end auction
+- **Insufficient balance**: Add more test ETH to account
+- **Bid too low**: Increase bid amount
+- **Auction ended**: Cannot bid on expired auctions
+- **Not auction seller**: Only seller can end auction
 
 #### 3. Contract Not Found
 
 **Problem**: "Contract not initialized"
 
 **Solution**:
-- ✅ Ensure Hardhat node is running (Terminal 1)
-- ✅ Verify contract is deployed
-- ✅ Check contract address is set correctly in frontend
+- Ensure Hardhat node is running (Terminal 1)
+- Verify contract is deployed
+- Check contract address is set correctly in frontend
 
-#### 4. Frontend Not Loading
+#### 4Frontend Not Loading
 
 **Problem**: Blank page or errors
 
 **Solution**:
-- ✅ Run `npm install` in frontend directory
-- ✅ Check console for errors (F12)
-- ✅ Ensure port 3000 is not in use
-- ✅ Try clearing browser cache
+- Run `npm install` in frontend directory
+- Check console for errors (F12)
+- Ensure port 3000 is not in use
+- Try clearing browser cache
 
 #### 5. Tests Failing
 
 **Problem**: Some tests don't pass
 
 **Solution**:
-- ✅ Run `npm install` to ensure dependencies are installed
-- ✅ Clear cache: `npx hardhat clean`
-- ✅ Recompile: `npx hardhat compile`
+- Run `npm install` to ensure dependencies are installed
+- Clear cache: `npx hardhat clean`
+- Recompile: `npx hardhat compile`
 
 #### 6. Time-Related Test Issues
 
 **Problem**: "Time remaining" tests fail
 
 **Solution**:
-- ✅ Tests manipulate blockchain time using Hardhat helpers
-- ✅ Ensure using Hardhat network (not external network)
+- Tests manipulate blockchain time using Hardhat helpers
+- Ensure using Hardhat network (not external network)
 
 ---
 
-## 📊 Project Statistics
-
-- **Smart Contract**: 218 lines (Auction.sol)
-- **Tests**: 409 lines, 30 test cases, 100% pass rate
-- **Frontend**: ~1,100 lines across 4 main files
-- **Total Files**: 15+ source files
-- **Dependencies**: 121 npm packages (frontend), ~30 npm packages (backend)
-- **Gas Optimization**: Moderate (can be further optimized)
-
----
-
-## 🔒 Security Considerations
+## Security Considerations
 
 ### Current Implementation
-✅ Reentrancy protection via pull-over-push pattern  
-✅ Access control (seller-only functions)  
-✅ Input validation  
-✅ Safe math (Solidity 0.8+)  
+Reentrancy protection via pull-over-push pattern  
+Access control  
+Input validation  
+Safe math (Solidity 0.8+)  
 
 ### Recommendations for Production
 - Implement `ReentrancyGuard` from OpenZeppelin
 - Add pause/unpause functionality
-- Implement upgrade patterns (if needed)
+- Implement upgrade patterns 
 - Complete security audit
 - Add rate limiting
 - Implement IPFS for auction metadata
 - Add dispute resolution mechanism
 
 ---
-
-## ✅ Quick Start Checklist
-
-- [ ] Node.js installed (v18+)
-- [ ] MetaMask installed and configured
-- [ ] Backend dependencies installed (`npm install`)
-- [ ] Frontend dependencies installed (`cd frontend && npm install`)
-- [ ] Hardhat node running (Terminal 1)
-- [ ] Contract deployed and address saved
-- [ ] MetaMask configured for localhost network
-- [ ] Test account imported to MetaMask
-- [ ] Frontend running (Terminal 3)
-- [ ] Wallet connected in browser
-- [ ] Contract address set in app
-
----
-
-**🎉 Congratulations!** You now have a fully functional blockchain-based auction platform!
-
-Happy Auctioning! 🏛️💰
