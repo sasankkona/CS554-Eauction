@@ -7,6 +7,9 @@ A fully functional decentralized auction platform built with **Solidity**, **Har
 ## Table of Contents
 
 - [Architecture Overview](#architecture-overview)
+  - [System Architecture](#system-architecture)
+  - [Component Architecture](#component-architecture)
+  - [Dependency Graph](#dependency-graph)
 - [Features](#features)
 - [Technology Stack](#technology-stack)
 - [Project Structure](#project-structure)
@@ -95,6 +98,65 @@ A fully functional decentralized auction platform built with **Solidity**, **Har
 │    └── View Functions                                       │
 └─────────────────────────────────────────────────────────────┘
 ```
+
+### Dependency Graph
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                              DEPENDENCY GRAPH                                  │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│   package.json  │────►│ hardhat.config.cjs │     │   .gitignore   │
+│   (root)        │     │   (networks)     │     │   (excludes)    │
+└─────────────────┘     └─────────────────┘     └─────────────────┘
+        │                       │                       │
+        │                       │                       │
+        ▼                       ▼                       ▼
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│   contracts/    │────►│   ignition/     │────►│   test/         │
+│   Auction.sol   │     │   Auction.js    │     │   Auction.js    │
+│   Lock.sol      │     │   Lock.js       │     │   Lock.js       │
+└─────────────────┘     └─────────────────┘     └─────────────────┘
+        │                       │                       │
+        │                       │                       │
+        └───────────────────────┼───────────────────────┘
+                                │
+                                ▼
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│   frontend/     │────►│   web3.js       │────►│   Auction.sol   │
+│   package.json  │     │   (ethers.js)   │     │   (contract)    │
+│   vite.config.js│     │                 │     │                 │
+└─────────────────┘     └─────────────────┘     └─────────────────┘
+        │                       │                       │
+        │                       │                       │
+        ▼                       ▼                       ▼
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│   main.jsx      │────►│   App.jsx       │────►│ AuctionCard.jsx │
+│   (entry)       │     │   (container)   │     │ (component)     │
+└─────────────────┘     └─────────────────┘     └─────────────────┘
+                                │                       │
+                                │                       │
+                                └───────────────────────┼───────────────────────┘
+                                                        │
+                                                        ▼
+                                                ┌─────────────────┐
+                                                │ CreateAuction.jsx│
+                                                │   (component)    │
+                                                └─────────────────┘
+```
+
+**Dependency Legend:**
+- **Solid Arrows (────►)**: Direct file/module dependencies
+- **Dashed Arrows (····►)**: Configuration or build dependencies
+- **Vertical Flow**: Layered architecture (frontend → web3 → contracts)
+
+**Key Dependencies:**
+- **Contracts** → **Ignition** → **Tests**: Smart contracts are deployed via ignition modules and tested
+- **Contracts** → **Web3.js** → **Frontend**: Frontend interacts with contracts through web3 service layer
+- **App.jsx** → **Components**: Main app renders auction components
+- **Package.json** → **All**: Defines project dependencies and scripts
+- **Hardhat Config** → **Ignition/Tests**: Provides network configurations
 
 ---
 
@@ -390,62 +452,6 @@ Networks:
       └── URL: Infura endpoint
 ```
 
-
-**`package.json`** 
-```
-Scripts:
-  └── test: Placeholder (use npx hardhat test)
-  
-DevDependencies: 
-  ├── @nomicfoundation/hardhat-* 
-  ├── hardhat: ^2.22.6
-  ├── ethers: ^6.15.0
-  ├── chai: ^4.5.0
-  └── typechain, solidity-coverage, etc.
-```
-
-**`frontend/package.json`** 
-```
-Scripts:
-  ├── dev: vite (development server)
-  ├── build: vite build (production)
-  └── preview: vite preview
-
-Dependencies: 
-  ├── react: ^18.3.1
-  ├── react-dom: ^18.3.1
-  └── ethers: ^6.15.0
-
-DevDependencies: 
-  ├── @vitejs/plugin-react: ^4.3.4
-  └── vite: ^6.0.1
-```
-
----
-
-## Prerequisites
-
-### Required Software
-
-**Do you have Node.js installed?**
-- **YES**: Ensure you have Node.js v18+ (`node --version`)
-- **NO**: Install from [nodejs.org](https://nodejs.org/)
-
-**Do you have MetaMask installed?**
-- **YES**: Great! Make sure it's unlocked
-- **NO**: Install MetaMask browser extension from [metamask.io](https://metamask.io/)
-
-**Do you have Git installed?**
-- **YES**: You're ready to clone
-- **NO**: Install from [git-scm.com](https://git-scm.com/)
-
-### System Requirements
-- **Operating System**: macOS, Linux, or Windows
-- **Node.js**: v18.0.0 or higher
-- **npm**: v9.0.0 or higher
-- **RAM**: 4GB minimum
-- **Browser**: Chrome, Firefox, or Brave with MetaMask
-
 ---
 
 ## Installation & Setup
@@ -458,6 +464,22 @@ DevDependencies:
   cd /Users/sasank/Desktop/cs554-eauction3
   ```
 - **NO**: Clone or create the project first
+
+### Step 1.5: Create Environment File
+
+Create a `.env` file in the root directory to store sensitive configuration:
+
+```bash
+touch .env
+```
+
+Add your private key for deployment (replace with your actual private key):
+
+```
+PRIVATE_KEY=your_private_key_here
+```
+
+**Security Note**: Never commit the `.env` file to version control. It's already in `.gitignore`.
 
 ### Step 2: Install Backend Dependencies
 
