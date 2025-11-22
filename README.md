@@ -1,10 +1,10 @@
-# 🏛️ E-Auction Platform - Blockchain-Based Decentralized Auction System
+# E-Auction Platform - Blockchain-Based Decentralized Auction System
 
 A fully functional decentralized auction platform built with **Solidity**, **Hardhat**, **React**, and **ethers.js**. This platform allows users to create auctions, place bids, and manage their auctions in a trustless, blockchain-powered environment.
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Architecture Overview](#architecture-overview)
 - [Features](#features)
@@ -20,7 +20,7 @@ A fully functional decentralized auction platform built with **Solidity**, **Har
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 ### System Architecture
 
@@ -98,7 +98,7 @@ A fully functional decentralized auction platform built with **Solidity**, **Har
 
 ---
 
-## ✨ Features
+## Features
 
 ### Smart Contract Features
 - Create auctions with title, description, starting price, and duration
@@ -140,7 +140,7 @@ A fully functional decentralized auction platform built with **Solidity**, **Har
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 cs554-eauction3/
@@ -377,37 +377,6 @@ ABI Definition:
   Includes all contract function signatures for interaction
 ```
 
-**`App.css`** 
-```
-Purpose: Complete application styling
-Sections:
-  ├── Reset & Base Styles
-  ├── Header Styles 
-  ├── Button Styles 
-  ├── Container & Layout 
-  ├── Tab Navigation 
-  ├── Form Styles 
-  ├── Auction Grid & Cards 
-  ├── Status Messages 
-  ├── Loading States 
-  ├── Empty States 
-  ├── Utility Classes 
-  └── Responsive Styles 
-
-Design System:
-  Colors:
-    ├── Primary: #667eea, #764ba2 (gradient)
-    ├── Success: #10b981, #059669
-    ├── Danger: #ef4444, #dc2626
-    └── Neutral: Grays
-
-Typography:
-    Font: 'Inter' with system fallbacks
-    
-Responsive Breakpoints:
-    Mobile: < 768px
-```
-
 #### Configuration Files
 
 **`hardhat.config.cjs`** 
@@ -421,13 +390,6 @@ Networks:
       └── URL: Infura endpoint
 ```
 
-**`vite.config.js`** 
-```
-Plugins: @vitejs/plugin-react
-Server:
-  ├── Port: 3000
-  └── Auto-open: true
-```
 
 **`package.json`** 
 ```
@@ -461,7 +423,7 @@ DevDependencies:
 
 ---
 
-## 📋 Prerequisites
+## Prerequisites
 
 ### Required Software
 
@@ -570,7 +532,7 @@ npx hardhat ignition deploy ./ignition/modules/Auction.js --network localhost
 - **YES**: Copy the contract address (e.g., `0x5FbDB2315678afecb367f032d93F642f64180aa3`)
 - **NO**: Ensure Terminal 1 (Hardhat node) is running
 
-**Save this address - you'll need it!** 📝
+**Save this address - you'll need it!**
 
 ### Phase 4: Configure MetaMask
 
@@ -660,7 +622,7 @@ npm run dev
 
 ---
 
-## 📜 Smart Contract Details
+## Smart Contract Details
 
 ### Main Functions
 
@@ -721,7 +683,7 @@ event FundsWithdrawn(address indexed user, uint256 amount);
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Run All Tests
 
