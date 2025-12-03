@@ -19,30 +19,10 @@ contract Auction {
     mapping(uint256 => AuctionItem) public auctions;
     mapping(uint256 => mapping(address => uint256)) public pendingReturns;
     
-    event AuctionCreated(
-        uint256 indexed auctionId,
-        string title,
-        address indexed seller,
-        uint256 startingPrice,
-        uint256 endTime
-    );
-    
-    event BidPlaced(
-        uint256 indexed auctionId,
-        address indexed bidder,
-        uint256 amount
-    );
-    
-    event AuctionEnded(
-        uint256 indexed auctionId,
-        address indexed winner,
-        uint256 amount
-    );
-    
-    event FundsWithdrawn(
-        address indexed user,
-        uint256 amount
-    );
+    event AuctionCreated(uint256 indexed auctionId,string title,address indexed seller,uint256 startingPrice,uint256 endTime);
+    event BidPlaced(uint256 indexed auctionId,address indexed bidder,uint256 amount);
+    event AuctionEnded(uint256 indexed auctionId,address indexed winner,uint256 amount);
+    event FundsWithdrawn(address indexed user,uint256 amount);
 
     modifier auctionExists(uint256 _auctionId) {
         require(auctions[_auctionId].exists, "Auction does not exist");
@@ -55,13 +35,9 @@ contract Auction {
         _;
     }
 
-    function createAuction(
-        string memory _title,
-        string memory _description,
-        uint256 _startingPrice,
-        uint256 _duration
-    ) external returns (uint256) {
+    function createAuction(string memory _title,string memory _description,uint256 _startingPrice,uint256 _duration) external returns (uint256) {
         require(bytes(_title).length > 0, "Title cannot be empty");
+        require(bytes(_description) > 0, "Description cannot be empty");
         require(_startingPrice > 0, "Starting price must be greater than 0");
         require(_duration > 0, "Duration must be greater than 0");
 
@@ -85,20 +61,13 @@ contract Auction {
         return auctionId;
     }
 
-    function placeBid(uint256 _auctionId) 
-        external 
-        payable 
-        auctionExists(_auctionId) 
-        auctionActive(_auctionId) 
-    {
+    function placeBid(uint256 _auctionId) external payable auctionExists(_auctionId) auctionActive(_auctionId) {
         AuctionItem storage auction = auctions[_auctionId];
-        
         require(msg.sender != auction.seller, "Seller cannot bid on own auction");
-        
         uint256 totalBid = pendingReturns[_auctionId][msg.sender] + msg.value;
         
         if (auction.currentBid == 0) {
-            require(totalBid >= auction.startingPrice, "Bid must be at least starting price");
+            require(totalBid >= auction.startingPrice, "Bid must be greater than starting price");
         } else {
             // If sender is already highest bidder, allow them to add to their bid
             if (msg.sender == auction.highestBidder) {
@@ -120,10 +89,7 @@ contract Auction {
         emit BidPlaced(_auctionId, msg.sender, totalBid);
     }
 
-    function endAuction(uint256 _auctionId) 
-        external 
-        auctionExists(_auctionId) 
-    {
+    function endAuction(uint256 _auctionId) external auctionExists(_auctionId) {
         AuctionItem storage auction = auctions[_auctionId];
         
         require(block.timestamp >= auction.endTime, "Auction has not ended yet");
@@ -165,8 +131,7 @@ contract Auction {
             uint256 endTime,
             bool ended,
             uint256 timeRemaining
-        ) 
-    {
+        ) {
         AuctionItem storage auction = auctions[_auctionId];
         uint256 remaining = 0;
         
@@ -214,11 +179,7 @@ contract Auction {
         return auctionCounter;
     }
 
-    function getPendingReturn(uint256 _auctionId, address _bidder) 
-        external 
-        view 
-        returns (uint256) 
-    {
+    function getPendingReturn(uint256 _auctionId, address _bidder) external view returns (uint256) {
         return pendingReturns[_auctionId][_bidder];
     }
 }
