@@ -194,6 +194,8 @@ A fully functional decentralized auction platform built with **Solidity**, **Har
                                                 └─────────────────┘
 ```
 
+![Dependency graph](dependency_graph.png)
+
 **Dependency Legend:**
 - **Solid Arrows (────►)**: Direct file/module dependencies
 - **Dashed Arrows (····►)**: Configuration or build dependencies
